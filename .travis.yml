@@ -32,7 +32,6 @@ jobs:
       - echo "Docker login ..."
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - echo "Docker push ..."
-      - docker tag backend $DOCKER_USERNAME/backend:latest
       - docker push $DOCKER_USERNAME/backend
   - stage: "Package"
     if: branch = develop
