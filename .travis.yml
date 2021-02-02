@@ -15,6 +15,7 @@ jobs:
     script:
       - echo "Maven build"
       - echo "Run test coverage and Quality Gate"
+      - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=lucianoBrd_DevOpsTP2
   - stage: "Build and Test"
     language: node.js
     node_js: "12.20"
@@ -50,3 +51,8 @@ cache:
     - "$HOME/.npm"
 services:
   - docker
+addons:
+  sonarcloud:
+    organization: "lucianobrd"
+    token:
+      secure: "$SONAR_TOKEN"
