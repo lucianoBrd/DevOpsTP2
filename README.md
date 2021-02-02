@@ -1,5 +1,5 @@
 # sample-application-students
-This is a sample application Springboot - Vue - Postgres Student application
+This is a sample application Springboot - Vue - Postgres Student application 
 
 ## Backend
 Simple Rest API Server
