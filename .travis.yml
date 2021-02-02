@@ -13,8 +13,7 @@ jobs:
     addons:
       sonarcloud:
         organization: "lucianobrd"
-        token:
-          secure: "$SONAR_TOKEN"
+        token: "$SONAR_TOKEN"
     before_script:
       - cd sample-application-backend
     script:
