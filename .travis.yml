@@ -10,6 +10,11 @@ jobs:
   - stage: "Build and Test"
     language: java
     jdk: oraclejdk11
+    addons:
+      sonarcloud:
+        organization: "lucianobrd"
+        token:
+          secure: "$SONAR_TOKEN"
     before_script:
       - cd sample-application-backend
     script:
@@ -51,8 +56,3 @@ cache:
     - "$HOME/.npm"
 services:
   - docker
-addons:
-  sonarcloud:
-    organization: "lucianobrd"
-    token:
-      secure: "$SONAR_TOKEN"
