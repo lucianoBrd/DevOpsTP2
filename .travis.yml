@@ -23,38 +23,27 @@ jobs:
     script:
       - echo "NPM install and build"
   - stage: "Package"
+    if: branch = develop
     before_script:
       - cd sample-application-backend
     script:
-      before_deploy:
-        - echo "Docker build ..."
-        - docker pull postgres:12.0-alpine
-        - docker run --rm --name database -e POSTGRES_PASSWORD=takimapass -e POSTGRES_USER=takima -e POSTGRES_DB=SchoolOrganisation postgres:12.0-alpine
-        - docker build -t $DOCKER_USERNAME/backend .
-        - echo "Docker login ..."
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - echo "Docker push ..."
-        - docker tag backend $DOCKER_USERNAME/backend:latest
-        deploy:
-          provider: script
-          script: docker push $DOCKER_USERNAME/backend
-          on:
-            branch: develop
+      - echo "Docker build ..."
+      - docker build -t $DOCKER_USERNAME/backend .
+      - echo "Docker login ..."
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - echo "Docker push ..."
+      - docker push $DOCKER_USERNAME/backend
   - stage: "Package"
+    if: branch = develop
     before_script:
       - cd sample-application-frontend
     script:
-      before_deploy:
-        - echo "Docker build ..."
-        - docker build -t $DOCKER_USERNAME/frontend .
-        - echo "Docker login ..."
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - echo "Docker push ..."
-      deploy:
-          provider: script
-          script: docker push $DOCKER_USERNAME/frontend
-          on:
-            branch: develop
+      - echo "Docker build ..."
+      - docker build -t $DOCKER_USERNAME/frontend .
+      - echo "Docker login ..."
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - echo "Docker push ..."
+      - docker push $DOCKER_USERNAME/frontend
 cache:
   directories:
     - "$HOME/.m2/repository"
