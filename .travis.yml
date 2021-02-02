@@ -23,6 +23,7 @@ jobs:
     script:
       - echo "NPM install and build"
   - stage: "Package"
+    if: branch = develop
     before_script:
       - cd sample-application-backend
     script:
@@ -36,6 +37,7 @@ jobs:
       - docker tag backend $DOCKER_USERNAME/backend:latest
       - docker push $DOCKER_USERNAME/backend
   - stage: "Package"
+    if: branch = develop
     before_script:
       - cd sample-application-frontend
     script:
