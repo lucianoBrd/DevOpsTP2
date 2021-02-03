@@ -50,7 +50,8 @@ docker compose up # runs docker-compose.yml which seeks for Dockerfiles and exec
 
 - Create SONARCLOUD_TOKEN in Travis-CI website
 
-## ansible
-ansible all -i ansible/inventories/setup.yml -m ping
-ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml 
-ansible-galaxy init ansible/roles/database
+# TP 3 ansible
+
+```ansible all -i ansible/inventories/setup.yml -m ping```
+```ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml```
+```ansible-galaxy init ansible/roles/database```
