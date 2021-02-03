@@ -55,3 +55,12 @@ docker compose up # runs docker-compose.yml which seeks for Dockerfiles and exec
 ```ansible all -i ansible/inventories/setup.yml -m ping```
 ```ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml```
 ```ansible-galaxy init ansible/roles/database```
+
+# Docker images :
+
+* https://hub.docker.com/repository/docker/lucianobrd/backend
+* https://hub.docker.com/repository/docker/lucianobrd/frontend
+
+# GitHub
+
+* https://github.com/lucianoBrd/DevOpsTP2
