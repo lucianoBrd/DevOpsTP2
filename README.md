@@ -52,6 +52,8 @@ docker compose up # runs docker-compose.yml which seeks for Dockerfiles and exec
 
 # TP 3 ansible
 
+En cas de problème enlever host SSH ```ssh-keygen -R "lucien.burdet.takima.cloud"```
+
 ```ansible all -i ansible/inventories/setup.yml -m ping```
 ```ansible-playbook -i ansible/inventories/setup.yml ansible/playbook.yml```
 ```ansible-galaxy init ansible/roles/database```
